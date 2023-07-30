@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  padding: 0px;
+  min-width: 0px;
+  max-width: none;
+
+  & a {
+    margin-inline: 1rem;
+    margin-block: 0.5rem;
+  }
+}

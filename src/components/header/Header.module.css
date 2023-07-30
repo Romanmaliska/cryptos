@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  gap: 1rem;
+
+  background-color: var(--secondary-bg-color);
+  color: (var(--color));
+
+  & .userButton {
+    margin-left: auto;
+  }
+
+  & i {
+    font-size: 1.5rem;
+  }
+}
