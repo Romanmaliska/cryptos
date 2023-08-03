@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 type Props = {
@@ -11,9 +11,9 @@ export default function Navbar({ isNavbarOpen, setIsNavbarOpen }: Props) {
     isNavbarOpen && (
       <aside>
         <nav className={styles.navbar}>
-          <Link to="coins" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
+          <NavLink to="/coins" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
             Coins
-          </Link>
+          </NavLink>
           <Link to="news" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
             News
           </Link>

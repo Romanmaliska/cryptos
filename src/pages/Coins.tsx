@@ -2,6 +2,6 @@
 
 export default function Coins() {
   return (
-    <div>Coins</div>
+    <h1>Coins.........................................</h1>
   )
 }

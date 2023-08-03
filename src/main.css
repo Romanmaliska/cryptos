@@ -1,21 +1,42 @@
 * {
-  padding: 0;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
   box-sizing: border-box;
 }
 
 :root {
-  --main-bg-color: rgb(20, 20, 20);
+  --main-bg-color: rgb(0, 0, 0);
   --secondary-bg-color: rgb(39, 42, 42);
   --main-text-color: rgb(255, 255, 255);
+  --secondary-text-color: rgb(179, 179, 179);
+  --dark-text-color: rgb(102, 102, 102);
   --color: rgb(255 147 50);
 }
 
 body {
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
-  margin: 1rem;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--main-bg-color);
   color: var(--main-text-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.24;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 0.8;
+  font-weight: 400;
+  color: var(--secondary-text-color);
 }
 
 a {
@@ -33,3 +54,4 @@ input {
   border: none;
   outline: none;
 }
+

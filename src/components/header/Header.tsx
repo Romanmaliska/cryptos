@@ -3,6 +3,7 @@ import { CgMenuGridO, CgClose } from "react-icons/cg";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "./Header.module.css";
 import Navbar from "../navbar/Navbar";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
         >
           {isNavbarOpen ? <CgClose /> : <CgMenuGridO />}
         </i>
-        <h1>Cryptos</h1>
+        <Link to="/">Cryptos</Link>
         <i className={styles.userButton}>
           <BiUserCircle />
         </i>

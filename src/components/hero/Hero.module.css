@@ -1,0 +1,16 @@
+.hero {
+  padding: 1.25rem;
+  max-width: 600px;
+  text-align: center;
+
+  & h1 {
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+}
