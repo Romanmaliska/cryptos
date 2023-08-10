@@ -1,9 +1,21 @@
 import styles from "./CoinTeaser.module.css";
 import useCryptoApi from "../../hooks/useCryptoAPI";
+import { parseCurency } from "../../utils/parseCurrency";
+
+type Coin = {
+  rank: number;
+  name: string;
+  iconUrl: string;
+  price: string;
+};
+
+type Coins = {
+  coins: Coin[];
+};
 
 export default function CoinTeaser() {
   const { data, isLoading, isError: error } = useCryptoApi({ limit: 5 });
-  const { coins } = data?.data || {};
+  const { coins }: Coins = data?.data || {};
 
   return (
     <>
@@ -18,14 +30,13 @@ export default function CoinTeaser() {
               <td>
                 <img
                   src={coin?.iconUrl}
-                  width={32}
-                  height={32}
+                  width={22}
+                  height={22}
                   alt={coin?.name}
                 />
                 {coin?.name}
               </td>
-              <td>{coin?.symbol}</td>
-              <td>{coin?.price}</td>
+              <td>{parseCurency(coin?.price)}</td>
             </tr>
           ))}
         </tbody>
