@@ -10,8 +10,8 @@ export default function Portfolio() {
           <img
             src={`./homepage/${exchange}.png`}
             alt={exchange}
-            width={88}
-            height={88}
+            width={80}
+            height={80}
           />
           <p>{exchange}</p>
           <p>Connect <span>&#10230;</span></p>
