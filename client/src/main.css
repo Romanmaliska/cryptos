@@ -11,7 +11,61 @@
   --main-text-color: rgb(255, 255, 255);
   --secondary-text-color: rgb(179, 179, 179);
   --dark-text-color: rgb(102, 102, 102);
-  --color: rgb(255 147 50);
+  --outline-color: rgb(38, 38, 38);
+  --orange-color: rgb(255 147 50);
+  --green-color: rgb(108, 207, 89);
+  --red-color: rgb(255, 77, 77);
+
+  --CS1Color: #ffb347;
+  --CS2Color: #ff9332;
+  --CS3Color: #ea5237;
+  --RedLightColor: #f02934;
+  --GreenLightColor: #34b349;
+  --RedDarkColor: #ff4d4d;
+  --GreenDarkColor: #6ccf59;
+  --BlackColor: #000000;
+  --WhiteColor: #ffffff;
+  --buttonHoverColor: #ff9e47;
+  --e75BackColor: rgba(0, 0, 0, 0.75);
+  --redditColor: #ff4500;
+  --twitterColor: #1ea0f2;
+  --fbColor: #1877f2;
+  --CSPurple: #935deb;
+  --QatarBlueColor: #03cfb7;
+  --QatarRedColor: #891638;
+  --QatarDarkBlueColor: #00a793;
+  --F3Color: #080808;
+  --F5Color: #0d0d0d;
+  --F10Color: #1a1a1a;
+  --F15Color: #262626;
+  --F20Color: #333333;
+  --F25Color: #404040;
+  --F30Color: #4d4d4d;
+  --F35Color: #595959;
+  --F40Color: #666666;
+  --F45Color: #737373;
+  --F50Color: #808080;
+  --F55Color: #8c8c8c;
+  --F60Color: #999999;
+  --F70Color: #b3b3b3;
+  --F75Color: #bfbfbf;
+  --F80Color: #cccccc;
+  --o3Color: #f7f7f7;
+  --o5Color: #f2f2f2;
+  --o10Color: #e5e5e5;
+  --o15Color: #d9d9d9;
+  --o20Color: #cccccc;
+  --o25Color: #bfbfbf;
+  --o30Color: #b2b2b2;
+  --o35Color: #a6a6a6;
+  --o40Color: #999999;
+  --o45Color: #8c8c8c;
+  --o50Color: #7f7f7f;
+  --o55Color: #737373;
+  --o60Color: #666666;
+  --o70Color: #4c4c4c;
+  --o75Color: #404040;
+  --o80Color: #333333;
 }
 
 body {
@@ -54,4 +108,3 @@ input {
   border: none;
   outline: none;
 }
-

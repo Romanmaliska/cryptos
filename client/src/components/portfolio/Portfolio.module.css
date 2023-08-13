@@ -8,11 +8,11 @@
 
   & article {
     padding: 0.75rem;
-    outline: 1px solid rgb(38, 38, 38);
+    outline: 1px solid var(--outline-color);
     border-radius: 16px;
 
     &:hover {
-      outline: 1px solid var(--color);
+      outline: 1px solid var(--orange-color);
       transform: translate(0px, -5px);
       transition: transform 0.3s ease-in-out;
     }

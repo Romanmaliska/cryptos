@@ -6,13 +6,14 @@ header {
   gap: 1rem;
 
   background-color: var(--secondary-bg-color);
-  color: (var(--color));
+  color: (var(--orange-color));
 
-  & .userButton {
-    margin-left: auto;
-  }
+}
 
-  & i {
-    font-size: 1.5rem;
-  }
+.userButton {
+ margin-left: auto;
+}
+
+i {
+  font-size: 1.5rem;
 }

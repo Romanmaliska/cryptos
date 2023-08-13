@@ -1,0 +1,17 @@
+.flex_center {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.red {
+  color: var(--red-color);
+}
+
+.green {
+  color: var(--green-color);
+}
+
+.orange {
+  color: var(--orange-color);
+}

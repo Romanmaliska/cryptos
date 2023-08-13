@@ -6,7 +6,7 @@ export default function Portfolio() {
   return (
     <section className={styles.portfolio}>
       {exchanges.map((exchange) => (
-        <article>
+        <article key={exchange}>
           <img
             src={`./homepage/${exchange}.png`}
             alt={exchange}
@@ -14,7 +14,9 @@ export default function Portfolio() {
             height={80}
           />
           <p>{exchange}</p>
-          <p>Connect <span>&#10230;</span></p>
+          <p>
+            Connect <span>&#10230;</span>
+          </p>
         </article>
       ))}
     </section>
