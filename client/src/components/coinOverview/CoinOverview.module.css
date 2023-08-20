@@ -1,0 +1,32 @@
+.overview {
+  padding: 1rem 0.5rem 2rem 0.5rem;
+  & h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  & h3 {
+    color: var(--dark-text-color);
+  }
+}
+
+.rank {
+  background-color: var(--orange-color);
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0.125rem 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--main-bg-color);
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+.detailsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}

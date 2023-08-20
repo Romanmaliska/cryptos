@@ -4,14 +4,13 @@ header {
   position: sticky;
   top: 0;
   gap: 1rem;
-
+  margin-bottom: 1rem;
   background-color: var(--secondary-bg-color);
   color: (var(--orange-color));
-
 }
 
 .userButton {
- margin-left: auto;
+  margin-left: auto;
 }
 
 i {

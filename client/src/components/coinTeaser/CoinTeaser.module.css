@@ -1,6 +1,5 @@
-.wrapper{
-  padding: 0.5rem
-
+.table-wrapper {
+  padding: 0.5rem;
 }
 
 table {
@@ -14,6 +13,11 @@ table {
 
 td {
   padding: 0.75rem 0.25rem;
+  vertical-align: middle;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 td > {
@@ -36,6 +40,25 @@ td:nth-child(n + 3) {
 td:last-child {
   padding-right: 0.875rem;
   padding-left: 2rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background: none;
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 1.25rem;
+  outline: solid 1px var(--outline-color);
+  border-radius: 16px;
+  color: var(--primary-text-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
 }
 
 @media screen and (max-width: 740px) {

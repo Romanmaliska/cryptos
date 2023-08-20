@@ -1,4 +1,4 @@
-export const parseCurency = (value: string): string => {  
+export const parseCurrency = (value: string): string => {  
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",

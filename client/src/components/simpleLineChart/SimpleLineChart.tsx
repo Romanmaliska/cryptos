@@ -4,7 +4,7 @@ type Props = {
   sparkline: string[];
 };
 
-export default function Chart({ sparkline }: Props) {
+export default function SimpleLineChart({ sparkline }: Props) {
   const prices = sparkline.filter(Boolean).map((price) => ({ value: price }));
 
   return (
