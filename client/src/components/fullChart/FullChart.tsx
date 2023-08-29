@@ -12,8 +12,6 @@ export default function FullChart({ sparkline }: Props) {
 
   const xAxisValues = getXAxisValues();
 
-  console.log(getXAxisValues());
-
   return (
     <ResponsiveContainer width="100%" height={250}>
       <AreaChart data={prices}>

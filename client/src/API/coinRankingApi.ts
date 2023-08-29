@@ -4,10 +4,11 @@ const fetcher = (url: string, options: {}) =>
   fetch(url, options).then((res) => res.json());
 
 export function getCoins({
-  limit = 5,
+  limit = 10,
   timePeriod = "7d",
+  offset = 0,
 }: {
-  limit?: 5 | 100;
+  limit?: 10 | 100;
   timePeriod?:
     | "1h"
     | "3h"
@@ -19,8 +20,9 @@ export function getCoins({
     | "1y"
     | "3y"
     | "5y";
+  offset?: number;
 }) {
-  const BASE_URL = `https://api.coinranking.com/v2/coins?limit=${limit}&timePeriod=${timePeriod}`;
+  const BASE_URL = `https://api.coinranking.com/v2/coins?limit=${limit}&timePeriod=${timePeriod}&offset=${offset}`;
 
   const { data, error, isLoading } = useSWR(
     BASE_URL,

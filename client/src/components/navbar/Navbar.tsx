@@ -9,13 +9,11 @@ type Props = {
 export default function Navbar({ isNavbarOpen, setIsNavbarOpen }: Props) {
   return (
     isNavbarOpen && (
-      <aside>
-        <nav className={styles.navbar}>
-          <NavLink to="/coins" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
-            Coins
-          </NavLink>
-        </nav>
-      </aside>
+      <nav className={styles.navbar}>
+        <NavLink to="/coins" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
+          Coins
+        </NavLink>
+      </nav>
     )
   );
 }

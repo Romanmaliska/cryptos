@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../pages/Root";
+import Root from "../layouts/Rootlayout";
 import Home from "../pages/Home";
 import Coins from "../pages/Coins";
 import Coin from "../pages/Coin";

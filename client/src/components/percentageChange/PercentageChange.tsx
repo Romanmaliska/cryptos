@@ -1,5 +1,6 @@
-import styleUtils from "../../styles/utils.module.css";
 import { TbTriangleInvertedFilled, TbTriangleFilled } from "react-icons/tb";
+import styles from "./PercentageChange.module.css";
+import styleUtils from "../../styles/utils.module.css";
 
 type Props = {
   change: string;
@@ -15,9 +16,9 @@ export default function PercentageChange({ change }: Props) {
   const color = changeAsNumber < 0 ? styleUtils.red : styleUtils.green;
 
   return (
-    <article className={`${color} ${styleUtils.flex_center}`}>
+    <article className={`${color} ${styles.percentageChange}`}>
       {changeAsNumber < 0 ? <TbTriangleInvertedFilled /> : <TbTriangleFilled />}
-      {change}
+      {change} %
     </article>
   );
 }

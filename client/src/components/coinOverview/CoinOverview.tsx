@@ -1,6 +1,8 @@
 import styles from "./CoinOverview.module.css";
+import { useAppSelector } from "../../hooks/useAppDispatch";
+import { selectCurrencyRates } from "../../reducers/currencySlice";
 import { parseCurrency } from "../../utils/parseCurrency";
-import PercentageChange from "../percentChange/PercentChange";
+import PercentageChange from "../percentageChange/percentageChange";
 
 type Props = {
   name: string;
@@ -19,6 +21,9 @@ export default function CoinOverview({
   price,
   change,
 }: Props) {
+
+  const currencyState = useAppSelector(selectCurrencyRates);
+
   return (
     <section className={styles.overview}>
       <span className={styles.rank}>rank #{rank}</span>
@@ -28,7 +33,7 @@ export default function CoinOverview({
         <h3>{symbol}</h3>
       </article>
       <article className={styles.detailsWrapper}>
-        <h2>{parseCurrency(price)}</h2>
+        <h2>{parseCurrency({price, currencyState})}</h2>
         <PercentageChange change={change} />
       </article>
     </section>

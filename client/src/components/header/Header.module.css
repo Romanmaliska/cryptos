@@ -4,15 +4,26 @@ header {
   position: sticky;
   top: 0;
   gap: 1rem;
+  padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--secondary-bg-color);
+  background-color: blue;
   color: (var(--orange-color));
+  
+  & i {
+    font-size: 1.5rem;
+  }
 }
 
 .userButton {
   margin-left: auto;
 }
 
-i {
-  font-size: 1.5rem;
+
+.popup{
+  width: max-content;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem;
+  border-radius: 8px;
+  z-index: 1;
+  background-color: var(--light-bg-color);
 }
