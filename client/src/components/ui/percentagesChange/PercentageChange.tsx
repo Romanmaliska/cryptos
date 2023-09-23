@@ -1,6 +1,6 @@
 import { TbTriangleInvertedFilled, TbTriangleFilled } from "react-icons/tb";
 import styles from "./PercentageChange.module.css";
-import styleUtils from "../../styles/utils.module.css";
+import styleUtils from "styles/utils.module.css";
 
 type Props = {
   change: string;

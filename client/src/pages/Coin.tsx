@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { getCoin } from "../API/coinRankingApi";
-import CoinDetails from "../components/coinDetails/CoinDetails";
+import { getCoin } from "API/coinRankingApi";
+import CoinDetails from "components/coinDetails/CoinDetails";
 
 export default function Coin() {
   const { uuid } = useParams<{ uuid: string }>();

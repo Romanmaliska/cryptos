@@ -5,7 +5,7 @@ type Params = {
   currencyState: CurrencyState;
 };
 
-type CurrenciesToBeCalculated = {
+type currencyLocale = {
   EUR: "de-DE";
   CNY: "zh-CN";
   USD: "en-US";
@@ -17,13 +17,15 @@ const calculateCoinPrice = (
   currencyState: CurrencyState
 ) => {
   const currentCurrency = currencyState.currentCurrency;
+  
   if (currentCurrency === "USD") return price;
+
   const currencyRate = currencyState?.currencyRates?.quotes?.[`USD${currentCurrency}`];
   return price * currencyRate!;
 };
 
 export const parseCurrency = ({ price, currencyState }: Params): string => {
-  const currenciesToBeCalculated: CurrenciesToBeCalculated = {
+  const currencyLocale: currencyLocale = {
     CNY: "zh-CN",
     CZK: "cs-CZ",
     USD: "en-US",
@@ -31,7 +33,7 @@ export const parseCurrency = ({ price, currencyState }: Params): string => {
   };
   const parsedPrice = Number(price);
   const currentCurrency = currencyState.currentCurrency;
-  const locale = currenciesToBeCalculated[currentCurrency];
+  const locale = currencyLocale[currentCurrency];
   const priceInCurrency = calculateCoinPrice(parsedPrice, currencyState);
   const formatOptions: Intl.NumberFormatOptions = {
     style: "currency",

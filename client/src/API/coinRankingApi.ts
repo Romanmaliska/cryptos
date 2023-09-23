@@ -47,7 +47,7 @@ export function getCoins({
 
 export function getCoin({
   uuid,
-  timePeriod = "7d",
+  timePeriod = "24h",
 }: {
   uuid: string;
   timePeriod?: "24h" | "7d" | "30d" | "3m" | "1y";

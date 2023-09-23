@@ -1,0 +1,15 @@
+.dialog {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  right: 50%;
+  width: 100%;
+  max-width: 37.5rem;
+  border-radius: 16px;
+  transform: translate(-50%, 0%);
+  background-color: var(--secondary-bg-color);
+  padding: 1rem;
+}
+
+.dialog::backdrop {
+}

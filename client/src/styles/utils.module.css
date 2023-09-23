@@ -1,4 +1,10 @@
-.flex_center {
+.justifyAlignCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alignCenter {
   display: flex;
   align-items: center;
 }

@@ -1,5 +1,5 @@
-import CoinOverview from "../coinOverview/CoinOverview";
-import AreaChart from "../fullChart/FullChart";
+import CoinOverview from "components/coinOverview/CoinOverview";
+import AreaChart from "components/fullChart/FullChart";
 
 type Props = {
   data: {

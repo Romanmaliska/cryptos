@@ -6,8 +6,7 @@ type Props = {
 };
 
 export default function SimpleLineChart({ change, sparkline }: Props) {
-  const prices = sparkline.filter(Boolean).map((price) => ({ value: price }));
-
+  const prices = sparkline?.filter(Boolean).map((price) => ({ value: price }));
   const changeAsNumber = Number(change);
   const strokeColor = changeAsNumber < 0 ? "#ff4d4d" : "#6ccf59";
 

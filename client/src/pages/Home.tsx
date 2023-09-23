@@ -1,24 +1,25 @@
-import * as CoinAPI from "../API/coinRankingApi";
-import CoinsTable from "../components/coinsTable/CoinsTable";
-import Hero from "../components/hero/Hero";
-import Portfolio from "../components/portfolio/Portfolio";
-import { Coins } from "../types/common";
+import * as CoinAPI from "API/coinRankingApi";
+import Hero from "components/hero/Hero";
+import Portfolio from "components/portfolio/Portfolio";
+import Button from "components/ui/button/Button";
+import Section from "components/ui/section/Section";
+import CoinsTable from "features/coinsTable/CoinsTable";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  const {
-    data,
-    isLoading,
-    isError: error,
-  } = CoinAPI.getCoins({});
-
-
-  const { coins}: Coins = data?.data || {};
+  const { data } = CoinAPI.getCoins({});
+  const { coins } = data?.data || {};
 
   return (
     <>
       <Hero />
       <Portfolio />
-      {!isLoading && !error && <CoinsTable coins={coins} />}
+      <CoinsTable coins={coins} />
+      <Section>
+        <Link to="/coins">
+          <Button>See More</Button>
+        </Link>
+      </Section>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { paginationRange } from "../utils/paginationRange";
+import { paginationRange } from "features/pagination/utils";
 
 type Props = {
   totalCoins: number;
