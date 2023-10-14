@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 
-// set token for Auth user
 const authUser = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json({
     message: "Auth user",
