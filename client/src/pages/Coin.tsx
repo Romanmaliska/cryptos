@@ -12,9 +12,5 @@ export default function Coin() {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Something went wrong...</p>;
 
-  return (
-    <div>
-      <CoinDetails data={data.data} />
-    </div>
-  );
+  return <CoinDetails data={data.data} />;
 }

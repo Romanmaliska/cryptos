@@ -1,5 +1,6 @@
 import CoinOverview from "components/coinOverview/CoinOverview";
-import AreaChart from "components/fullChart/FullChart";
+import CoinChart from "features/coinChart/CoinChart";
+import styles from "./CoinDetails.module.css";
 
 type Props = {
   data: {
@@ -18,7 +19,7 @@ type Props = {
 export default function CoinDetails({ data }: Props) {
   const { name, rank, symbol, iconUrl, price, change, sparkline } = data?.coin;
   return (
-    <>
+    <main className={styles.coin_details}>
       <CoinOverview
         name={name}
         rank={rank}
@@ -27,7 +28,7 @@ export default function CoinDetails({ data }: Props) {
         price={price}
         change={change}
       />
-      <AreaChart sparkline={sparkline} />
-    </>
+      <CoinChart sparkline={sparkline} />
+    </main>
   );
 }

@@ -39,7 +39,7 @@ export default function CoinTableRows({ coins }: Props) {
           </td>
           <td>
             <Link to={`../coins/${uuid}`}>
-              {parseCurrency({ price: price, currencyState })}
+              {parseCurrency({ price, currencyState })}
             </Link>
           </td>
           <td>

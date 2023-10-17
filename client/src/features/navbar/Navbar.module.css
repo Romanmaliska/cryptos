@@ -1,10 +1,13 @@
-.navbar{
-  display: flex;
-  align-items: center;
-  max-width: 37.5rem;
-  margin: 1rem auto;
-  gap: 1rem;
+.header {
+  background-color: var(--secondary-bg-color);
+}
 
+.navbar {
+  /* display: flex; */
+  /* align-items: center; */
+  max-width: 120rem;
+  margin: 0 auto;
+  /* gap: 1rem; */
 }
 
 .navlink {
