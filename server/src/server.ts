@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 dotenv.config();
-
+import cookieParser from "express";
 import userRoutes from "./routes/userRoutes";
 
 import { errorHandler, notFound } from "./middleware/errorMiddleware";
@@ -16,6 +16,7 @@ const userRoutePath = "/api/users";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use(userRoutePath, userRoutes);
 

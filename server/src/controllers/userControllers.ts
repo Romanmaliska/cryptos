@@ -1,12 +1,17 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
+import { generateToken } from "../utils/generateToken";
+import mongoose from "mongoose";
+import { ObjectId } from "mongoose";
 
-const authUser = asyncHandler(async (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Auth user",
-  });
-});
+type UserDocument = mongoose.Document & {
+  name: string;
+  email: string;
+  password: string;
+  _id: ObjectId;
+  matchPasswords: (enteredPassword: string) => Promise<boolean>;
+};
 
 const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
@@ -25,6 +30,25 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
   });
 
   if (user) {
+    generateToken(res, user._id);
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data.");
+  }
+});
+
+const authUser = asyncHandler(async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  const user: UserDocument | null = await User.findOne({ email });
+
+  if (user && (await user.matchPasswords(password))) {
+    generateToken(res, user._id);
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -37,8 +61,13 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 });
 
 const logoutUser = asyncHandler(async (req: Request, res: Response) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+
   res.status(200).json({
-    message: "Logout user",
+    message: "User has been logged out.",
   });
 });
 
