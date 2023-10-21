@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import { generateToken } from "../utils/generateToken";
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 type UserDocument = mongoose.Document & {
   name: string;
@@ -13,9 +13,8 @@ type UserDocument = mongoose.Document & {
 };
 
 // @desc Register a new user
-// @route POST /api/users/login
+// @route POST /api/users
 // @access Public
-
 const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
@@ -34,9 +33,8 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc Auth user & get token
-// @route POST /api/users/login
+// @route POST /api/users/auth
 // @access Public
-
 const authUser = asyncHandler(async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -58,7 +56,6 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
 // @desc Logout user
 // @route POST /api/users/logout
 // @access Public
-
 const logoutUser = asyncHandler(async (_req: Request, res: Response) => {
   res.cookie("jwt", "", {
     httpOnly: true,
@@ -74,19 +71,40 @@ const logoutUser = asyncHandler(async (_req: Request, res: Response) => {
 // @route GET /api/users/profile
 // @access Private
 
-const getUserProfile = asyncHandler(async (_req: Request, res: Response) => {
+const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
+  const user = {
+    _id: req.user!._id,
+    name: req.user!.name,
+    email: req.user!.email,
+  };
+
   res.status(200).json({
-    message: "Profile user",
+    user,
   });
 });
 
 // @desc Update user profile
 // @route PUT /api/users/profile
 // @access Private
+const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
+  console.log("returning user profile", req);
+  const user = await User.findById(req.user!._id);
 
-const updateUserProfile = asyncHandler(async (_req: Request, res: Response) => {
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found.");
+  }
+
+  user.name = req.body.name || user.name;
+  user.email = req.body.email || user.email;
+  req.body.password && (user.password = req.body.password);
+
+  const updatedUser = await user.save();
+
   res.status(200).json({
-    message: "Update user profile",
+    _id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
   });
 });
 

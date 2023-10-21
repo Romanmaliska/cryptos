@@ -1,7 +1,8 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
 import dotenv from "dotenv";
 dotenv.config();
-import cookieParser from "express";
+import cookieParser from "cookie-parser";
+
 import userRoutes from "./routes/userRoutes";
 
 import { errorHandler, notFound } from "./middleware/errorMiddleware";

@@ -8,7 +8,7 @@ const notFound = (req: Request, res: Response, next: NextFunction) => {
 
 const errorHandler = (
   err: any,
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ) => {
