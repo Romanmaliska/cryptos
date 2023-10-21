@@ -2,14 +2,13 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import { generateToken } from "../utils/generateToken";
-import mongoose from "mongoose";
-import { ObjectId } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 type UserDocument = mongoose.Document & {
   name: string;
   email: string;
   password: string;
-  _id: ObjectId;
+  _id: mongoose.Types.ObjectId;
   matchPasswords: (enteredPassword: string) => Promise<boolean>;
 };
 
@@ -28,18 +27,6 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
     email,
     password,
   });
-
-  if (user) {
-    generateToken(res, user._id);
-    res.status(201).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-    });
-  } else {
-    res.status(400);
-    throw new Error("Invalid user data.");
-  }
 });
 
 const authUser = asyncHandler(async (req: Request, res: Response) => {
@@ -60,7 +47,7 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-const logoutUser = asyncHandler(async (req: Request, res: Response) => {
+const logoutUser = asyncHandler(async (_req: Request, res: Response) => {
   res.cookie("jwt", "", {
     httpOnly: true,
     expires: new Date(0),
@@ -71,13 +58,13 @@ const logoutUser = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
-const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
+const getUserProfile = asyncHandler(async (_req: Request, res: Response) => {
   res.status(200).json({
     message: "Profile user",
   });
 });
 
-const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
+const updateUserProfile = asyncHandler(async (_req: Request, res: Response) => {
   res.status(200).json({
     message: "Update user profile",
   });

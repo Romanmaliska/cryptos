@@ -14,12 +14,14 @@ const port = process.env.PORT || 5000;
 const app: Application = express();
 const userRoutePath = "/api/users";
 
+//Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(userRoutePath, userRoutes);
 
+// Error handling
 app.use(notFound);
 app.use(errorHandler);
 

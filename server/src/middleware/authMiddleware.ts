@@ -28,4 +28,4 @@ const authProtector = asyncHandler(
   }
 );
 
-export { authProtector as protect };
+export { authProtector };
