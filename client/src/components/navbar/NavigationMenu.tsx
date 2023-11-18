@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CgClose, CgMenuGridO } from "react-icons/cg";
 
@@ -5,15 +6,8 @@ import styles from "components/navbar/Navbar.module.css";
 
 import Dialog from "components/ui/dialog/Dialog";
 
-type Props = {
-  isDialogOpen: boolean;
-  setIsDialogOpen: (isDialogOpen: boolean) => void;
-};
-
-export default function NavigationMenu({
-  isDialogOpen,
-  setIsDialogOpen,
-}: Props) {
+export default function NavigationMenu() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const navlinks = ["Coins", "News"];
 
   return (
