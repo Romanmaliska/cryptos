@@ -1,0 +1,22 @@
+header {
+  background-color: var(--secondary-bg-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 37.5rem;
+  margin: 0 auto;
+  gap: 1rem;
+
+  & a {
+    display: flex;
+    margin: 0.5rem;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--main-text-color);
+  }
+}

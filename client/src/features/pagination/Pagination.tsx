@@ -13,9 +13,6 @@ export default function Pagination({ stats, currentPage, handleClick }: Props) {
 
   if (!totalCoins) return null;
 
-  console.log("currentPage", currentPage);
-  console.log("totalcoin", totalCoins);
-
   const pagination = usePagination({ totalCoins, currentPage });
 
   return (

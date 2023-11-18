@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Rootlayout";
-import Home from "../pages/Home";
-import Coins from "../pages/Coins";
-import Coin from "../pages/Coin";
-import NotFound from "../pages/NotFound";
+import Home from "pages/Home";
+import Coins from "pages/Coins";
+import Coin from "pages/Coin";
+import NotFound from "pages/NotFound";
 
 const router = createBrowserRouter([
   {

@@ -1,10 +1,14 @@
-import Dialog from "components/ui/dialog/Dialog";
-import styles from "features/navbar/Navbar.module.css";
 import { useState } from "react";
-import { BiUserCircle } from "react-icons/bi";
-import { fetchCurrencyRates } from "../../store/currencySlice";
-import { useAppDispatch } from "../../store/useAppDispatch";
-import { CurrencyState } from "../../types/common";
+import { IoSettingsOutline } from "react-icons/io5";
+
+import styles from "features/currencyOptions/CurrencyOptions.module.css";
+
+import Dialog from "components/ui/dialog/Dialog";
+
+import { fetchCurrencyRates } from "store/currencySlice";
+import { useAppDispatch } from "store/useAppDispatch";
+
+import { CurrencyState } from "types/common";
 
 export default function NavbarCurrencyOptions() {
   const dispatch = useAppDispatch();
@@ -20,11 +24,17 @@ export default function NavbarCurrencyOptions() {
 
   return (
     <>
-      <BiUserCircle size="24px" onClick={() => setIsDialogOpen(!isDialogOpen)} />
-      <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(!isDialogOpen)}>
+      <IoSettingsOutline
+        size="24px"
+        onClick={() => setIsDialogOpen(!isDialogOpen)}
+      />
+      <Dialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(!isDialogOpen)}
+      >
         {currencies.map((currency) => (
           <span
-            className={styles.currency_wrapper}
+            className={styles.currency}
             key={currency}
             onClick={() => {
               setIsDialogOpen(false);

@@ -2,12 +2,12 @@ import { useRef, useLayoutEffect } from "react";
 import styles from "./Dialog.module.css";
 
 type Props = {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 };
 
-export default function Dialog({ open, onClose, children }: Props) {
+export default function Dialog({ isOpen, onClose, children }: Props) {
   const ref = useRef<HTMLDialogElement | null>(null);
   const dialogRef = ref.current;
 
@@ -21,9 +21,9 @@ export default function Dialog({ open, onClose, children }: Props) {
   }, [onClose]);
 
   useLayoutEffect(() => {
-    if (open && !dialogRef?.open) dialogRef?.showModal();
-    else if (!open && dialogRef?.open) dialogRef?.close();
-  }, [open]);
+    if (isOpen && !dialogRef?.open) dialogRef?.showModal();
+    else if (!isOpen && dialogRef?.open) dialogRef?.close();
+  }, [isOpen]);
 
   return (
     <dialog
