@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "store/useAppDispatch";
-import { selectCurrencyRates } from "../../store/currencySlice";
+import { selectCurrencyRates } from "../../slices/currencySlice";
 import utilStyles from "../../styles/utils.module.css";
 import { Coin } from "../../types/common";
 import { parseCurrency } from "../../utils/parseCurrency";

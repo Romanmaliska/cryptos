@@ -5,10 +5,10 @@ import styles from "./UserStatusForm.module.css";
 import Button from "components/ui/button/Button";
 
 type Props = {
-  setIsSignUp: (isSignUp: boolean) => void;
+  setIsSignUpShown: (isSignUp: boolean) => void;
 };
 
-export default function SignUpFormDialog({ setIsSignUp }: Props) {
+export default function SignUpFormDialog({ setIsSignUpShown }: Props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +61,7 @@ export default function SignUpFormDialog({ setIsSignUp }: Props) {
       </form>
       <p>
         Already have an account?{" "}
-        <Button onClick={() => setIsSignUp(false)}>Sign In</Button>
+        <Button onClick={() => setIsSignUpShown(false)}>Sign In</Button>
       </p>
     </>
   );

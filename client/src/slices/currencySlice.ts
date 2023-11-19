@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { CurrencyState, CurrencyRates } from "../types/common";
 import * as currencyApi from "../API/currencyApi";
-import { RootState } from "./store";
+import { RootState } from "../store/store";
 
 const initialState: CurrencyState = {
   currentCurrency: "USD",

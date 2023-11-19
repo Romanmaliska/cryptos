@@ -1,31 +1,32 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import styles from "./UserStatusForm.module.css";
+import { useLoginMutation } from "slices/userApiSlice";
+import { setCredentials } from "slices/userAuthSlice";
 
 import Button from "components/ui/button/Button";
 
+import styles from "./UserStatusForm.module.css";
+
 type Props = {
-  setIsSignUp: (isSignUp: boolean) => void;
+  setIsSignUpShown: (isSignUpShown: boolean) => void;
 };
 
-export default function SignInFormDialog({ setIsSignUp }: Props) {
+export default function SignInFormDialog({ setIsSignUpShown }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const dispatch = useDispatch();
+  const [login] = useLoginMutation();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const data = {
-      email,
-      password,
-    };
-
-    console.log(data);
-    // fetch("/api/users", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // });
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -53,7 +54,7 @@ export default function SignInFormDialog({ setIsSignUp }: Props) {
       </form>
       <p>
         Not Registered?{" "}
-        <Button onClick={() => setIsSignUp(true)}>Sign Up</Button>
+        <Button onClick={() => setIsSignUpShown(true)}>Sign Up</Button>
       </p>
     </>
   );

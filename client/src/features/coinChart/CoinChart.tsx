@@ -1,6 +1,6 @@
 import { YAxis, XAxis, AreaChart, Area, ResponsiveContainer } from "recharts";
 import { useAppSelector } from "store/useAppDispatch";
-import { selectCurrencyRates } from "store/currencySlice";
+import { selectCurrencyRates } from "slices/currencySlice";
 import { getXAxisValues } from "features/coinChart/XAxisCalculation";
 import { getYAxisValues } from "features/coinChart/YAxisCalculation";
 import { parseCurrency } from "utils/parseCurrency";

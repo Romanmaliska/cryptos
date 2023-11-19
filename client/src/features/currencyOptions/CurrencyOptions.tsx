@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 
-import styles from "features/currencyOptions/CurrencyOptions.module.css";
-
 import Dialog from "components/ui/dialog/Dialog";
 
-import { fetchCurrencyRates } from "store/currencySlice";
+import { fetchCurrencyRates } from "slices/currencySlice";
 import { useAppDispatch } from "store/useAppDispatch";
 
 import { CurrencyState } from "types/common";
+
+import styles from "features/currencyOptions/CurrencyOptions.module.css";
 
 export default function NavbarCurrencyOptions() {
   const dispatch = useAppDispatch();
