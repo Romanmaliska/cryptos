@@ -1,12 +1,40 @@
-.btn_primary {
-  margin: 1rem 0.5rem;
-  padding: 0.5rem 1.25rem;
+.btn {
+  cursor: pointer;
   outline: solid 1px var(--outline-color);
   border-radius: 16px;
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn_primary {
   background-color: var(--light-bg-color);
   color: var(--main-text-color);
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-align: center;
+
+  &:hover {
+    background-color: var(--main-bg-color);
+    color: var(--orange-color);
+  }
+
+  &:focus {
+    border: solid 2px var(--main-bg-color);
+  }
+}
+
+.btn_secondary {
+  background-color: var(--orange-color);
+  color: var(--main-bg-color);
+
+  &:hover &:focus {
+    background-color: var(--light-orange-color);
+    color: var(--main-text-color);
+  }
+
+  &:focus {
+    border: solid 2px var(--main-bg-color);
+    background-color: var(--light-orange-color);
+    color: var(--main-text-color);
+  }
 }

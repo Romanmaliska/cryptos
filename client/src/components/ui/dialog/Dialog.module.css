@@ -1,11 +1,12 @@
 .dialog {
   position: fixed;
-  top: 60px;
+  top: 62px;
   left: 50%;
   right: 50%;
   width: 100%;
   max-width: 37.5rem;
   border-radius: 16px;
+  border: 1px solid var(--outline-color);
   transform: translate(-50%, 0%);
   background-color: var(--secondary-bg-color);
   padding: 1rem;

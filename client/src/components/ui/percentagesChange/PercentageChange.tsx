@@ -16,9 +16,9 @@ export default function PercentageChange({ change }: Props) {
   const color = changeAsNumber < 0 ? styleUtils.red : styleUtils.green;
 
   return (
-    <article className={`${color} ${styles.percentageChange}`}>
+    <p className={`${color} ${styles.percentageChange}`}>
       {changeAsNumber < 0 ? <TbTriangleInvertedFilled /> : <TbTriangleFilled />}
       {change} %
-    </article>
+    </p>
   );
 }

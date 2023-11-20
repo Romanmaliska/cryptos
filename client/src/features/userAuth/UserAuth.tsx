@@ -22,9 +22,15 @@ export default function UserAuth() {
         <h2>Sign Up</h2>
         <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
           {isSignUpShown ? (
-            <SignUpFormDialog setIsSignUpShown={setIsSignUpShown} />
+            <SignUpFormDialog
+              setIsSignUpShown={setIsSignUpShown}
+              setIsDialogOpen={setIsDialogOpen}
+            />
           ) : (
-            <SignInFormDialog setIsSignUpShown={setIsSignUpShown} />
+            <SignInFormDialog
+              setIsSignUpShown={setIsSignUpShown}
+              setIsDialogOpen={setIsDialogOpen}
+            />
           )}
         </Dialog>
       </section>

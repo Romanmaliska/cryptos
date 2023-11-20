@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { IoClose } from "react-icons/io5";
 
 import { useLoginMutation } from "slices/userApiSlice";
 import { setCredentials } from "slices/userAuthSlice";
@@ -10,9 +11,13 @@ import styles from "./UserStatusForm.module.css";
 
 type Props = {
   setIsSignUpShown: (isSignUpShown: boolean) => void;
+  setIsDialogOpen: (isDialogOpen: boolean) => void;
 };
 
-export default function SignInFormDialog({ setIsSignUpShown }: Props) {
+export default function SignInFormDialog({
+  setIsSignUpShown,
+  setIsDialogOpen,
+}: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,6 +37,12 @@ export default function SignInFormDialog({ setIsSignUpShown }: Props) {
   return (
     <>
       <form className={styles.form}>
+        <IoClose
+          onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => {
+            e.stopPropagation();
+            setIsDialogOpen(false);
+          }}
+        />
         <fieldset>
           <legend>sign in</legend>
           <label htmlFor="email">Email</label>
@@ -50,7 +61,9 @@ export default function SignInFormDialog({ setIsSignUpShown }: Props) {
             placeholder="********"
           />
         </fieldset>
-        <Button onClick={handleSubmit}>Sign In</Button>
+        <Button onClick={handleSubmit} className="btn_secondary">
+          Sign In
+        </Button>
       </form>
       <p>
         Not Registered?{" "}

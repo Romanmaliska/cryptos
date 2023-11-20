@@ -4,11 +4,16 @@ import styles from "./button.module.css";
 type Props = {
   children: ReactNode;
   onClick?: (e: any) => void;
+  className?: "btn_primary" | "btn_secondary";
 };
 
-export default function Button({ children, onClick }: Props) {
+export default function Button({
+  children,
+  onClick,
+  className = "btn_primary",
+}: Props) {
   return (
-    <button className={styles.btn_primary} onClick={onClick}>
+    <button className={`${styles.btn} ${styles[className]}`} onClick={onClick}>
       {children}
     </button>
   );

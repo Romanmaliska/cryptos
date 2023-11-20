@@ -21,8 +21,8 @@ export default function Dialog({ isOpen, onClose, children }: Props) {
   }, [onClose]);
 
   useLayoutEffect(() => {
-    if (isOpen && !dialogRef?.open) dialogRef?.showModal();
-    else if (!isOpen && dialogRef?.open) dialogRef?.close();
+    if (isOpen) dialogRef?.showModal();
+    else if (!isOpen) dialogRef?.close();
   }, [isOpen]);
 
   return (

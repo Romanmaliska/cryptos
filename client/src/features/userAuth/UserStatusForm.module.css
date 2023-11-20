@@ -6,6 +6,20 @@
     width: 100%;
     margin-bottom: 1rem;
   }
+
+  & svg {
+    color: var(--main-text-color);
+    width: 32px;
+    height: auto;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--orange-color);
+    }
+  } 
 }
 
 .user_panel {
@@ -16,8 +30,9 @@
   border-radius: 0 0 0.5rem 0.5rem;
   padding: 0.5rem;
   background-color: var(--light-bg-color);
-  
-  & div, button {
+
+  & div,
+  button {
     display: flex;
     align-items: center;
     justify-content: space-between;
