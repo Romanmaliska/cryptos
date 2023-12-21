@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+
+import { useRegisterMutation } from "slices/userApiSlice";
+import { setCredentials } from "slices/userAuthSlice";
 
 import Button from "components/ui/button/Button";
 
@@ -14,24 +18,25 @@ export default function SignUpFormDialog({
   setIsSignUpShown,
   setIsDialogOpen,
 }: Props) {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const dispatch = useDispatch();
+  const [register, { isLoading }] = useRegisterMutation();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const userCredentials = {
-      username,
-      email,
-      password,
-    };
-
-    fetch("/api/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userCredentials),
-    });
+    try {
+      const res = await register({
+        name,
+        email,
+        password,
+      }).unwrap();
+      dispatch(setCredentials({ ...res }));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -49,8 +54,8 @@ export default function SignUpFormDialog({
           <input
             type="text"
             id="name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder="John Doe"
           />
           <label htmlFor="email">Email</label>
@@ -69,15 +74,13 @@ export default function SignUpFormDialog({
             placeholder="********"
           />
         </fieldset>
-        <Button onClick={handleSubmit} className="btn_secondary">Register</Button>
+        <Button onClick={handleSubmit} className="btn_secondary">
+          Register
+        </Button>
       </form>
       <p>
         Already have an account?{" "}
-        <Button
-          onClick={() => setIsSignUpShown(false)}
-        >
-          Sign In
-        </Button>
+        <Button onClick={() => setIsSignUpShown(false)}>Sign In</Button>
       </p>
     </>
   );

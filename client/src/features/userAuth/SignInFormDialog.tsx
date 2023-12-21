@@ -22,7 +22,7 @@ export default function SignInFormDialog({
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,6 +41,7 @@ export default function SignInFormDialog({
           onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => {
             e.stopPropagation();
             setIsDialogOpen(false);
+            setIsSignUpShown(true);
           }}
         />
         <fieldset>

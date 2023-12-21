@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { useLogoutMutation } from "slices/userApiSlice";
 import { removeCredentials } from "slices/userAuthSlice";
@@ -19,7 +20,7 @@ export default function UserMenu({ name }: Props) {
 
   const handleLogout = async () => {
     try {
-      await logout({});
+      await logout({}).unwrap();
       dispatch(removeCredentials());
     } catch (err) {
       console.log(err);
@@ -27,14 +28,17 @@ export default function UserMenu({ name }: Props) {
   };
 
   return (
-    <Popover className={styles.user_menu}>
+    <Popover>
       <Popover.Button>
         <FaRegUser size="24px" color="white" />
       </Popover.Button>
       <Popover.Panel className={styles.user_panel}>
-        <Popover.Button as="div">
-          {name} <IoIosArrowForward />
-        </Popover.Button>
+        <NavLink to={"/profile"}>
+          <Popover.Button>
+            {name}
+            <IoIosArrowForward />
+          </Popover.Button>
+        </NavLink>
         <Popover.Button onClick={() => handleLogout()}>Log Out</Popover.Button>
       </Popover.Panel>
     </Popover>

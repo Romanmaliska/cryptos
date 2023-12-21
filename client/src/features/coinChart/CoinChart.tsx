@@ -14,6 +14,8 @@ export default function CoinChart({ sparkline }: Props) {
     price: Number(price).toFixed(),
   }));
 
+
+  //TODO: fix this
   const currencyState = useAppSelector(selectCurrencyRates);
   const parsedCurrency = parseCurrency({ price: "1000", currencyState });
   console.log(parsedCurrency);

@@ -7,6 +7,7 @@ import Dialog from "components/ui/dialog/Dialog";
 import SignInFormDialog from "features/userAuth/SignInFormDialog";
 import SignUpFormDialog from "features/userAuth/SignUpFormDialog";
 import UserMenu from "features/userAuth/UserMenu";
+import Button from "components/ui/button/Button";
 
 export default function UserAuth() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function UserAuth() {
     <>
       {name && <UserMenu name={name} />}
       <section onClick={() => setIsDialogOpen(true)}>
-        <h2>Sign Up</h2>
+        <Button className="btn_secondary">Get Started</Button>
         <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
           {isSignUpShown ? (
             <SignUpFormDialog
