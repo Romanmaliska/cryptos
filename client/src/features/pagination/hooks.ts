@@ -11,7 +11,7 @@ export const usePagination = ({ currentPage, totalCoins }: Props) => {
     const pageSize = 100;
     const totalPageCount = Math.ceil(totalCoins / pageSize);
     const siblingCount = 1;
-    const DOTS = "...";
+    const pagesSeparator = "...";
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
     const rightSiblingIndex = Math.min(
@@ -29,7 +29,7 @@ export const usePagination = ({ currentPage, totalCoins }: Props) => {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = paginationRange(1, leftItemCount);
 
-      return [...leftRange, DOTS, totalPageCount];
+      return [...leftRange, pagesSeparator, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
@@ -38,12 +38,12 @@ export const usePagination = ({ currentPage, totalCoins }: Props) => {
         totalPageCount - rightItemCount + 1,
         totalPageCount
       );
-      return [firstPageIndex, DOTS, ...rightRange];
+      return [firstPageIndex, pagesSeparator, ...rightRange];
     }
 
     if (shouldShowLeftDots && shouldShowRightDots) {
       const middleRange = paginationRange(leftSiblingIndex, rightSiblingIndex);
-      return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
+      return [firstPageIndex, pagesSeparator, ...middleRange, pagesSeparator, lastPageIndex];
     }
   }, [totalCoins, currentPage]);
 

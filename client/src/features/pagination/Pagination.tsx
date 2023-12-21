@@ -2,6 +2,8 @@ import Button from "components/ui/button/Button";
 import { usePagination } from "features/pagination/hooks";
 import { Stats } from "types/common";
 
+import styles from "./Pagination.module.css";
+
 type Props = {
   stats: Stats;
   currentPage: number;
@@ -16,12 +18,16 @@ export default function Pagination({ stats, currentPage, handleClick }: Props) {
   const pagination = usePagination({ totalCoins, currentPage });
 
   return (
-    <>
-      {pagination?.map((page, i) => (
-        <Button key={i} onClick={() => handleClick(page)}>
-          {page}
-        </Button>
-      ))}
-    </>
+    <section className={styles.pagination}>
+      {pagination?.map((page, i) =>
+        page === "..." ? (
+          <span key={i}>...</span>
+        ) : (
+          <Button key={i} onClick={() => handleClick(page)}>
+            {page}
+          </Button>
+        )
+      )}
+    </section>
   );
 }

@@ -1,23 +1,36 @@
 import styles from "./Portfolio.module.css";
 
 export default function Portfolio() {
-  const exchanges = ["Binance", "MetaMask", "CoinBase"];
+  const exchanges = [
+    {
+      name: "Binance",
+      link: "https://www.binance.com",
+    },
+    {
+      name: "MetaMask",
+      link: "https://metamask.io/",
+    },
+    {
+      name: "CoinBase",
+      link: "https://www.coinbase.com/",
+    },
+  ];
 
   return (
     <section className={styles.portfolio}>
-      {exchanges.map((exchange) => (
-        <article key={exchange}>
+      {exchanges.map(({ name, link }) => (
+        <a href={link} target="_blank" rel="noreferrer">
           <img
-            src={`./homepage/${exchange}.png`}
-            alt={exchange}
+            src={`./homepage/${name}.png`}
+            alt={name}
             width={80}
             height={80}
           />
-          <p>{exchange}</p>
+          <p>{name}</p>
           <p>
             Connect <span>&#10230;</span>
           </p>
-        </article>
+        </a>
       ))}
     </section>
   );
