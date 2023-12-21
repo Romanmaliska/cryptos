@@ -4,6 +4,8 @@ import Home from "pages/Home";
 import Coins from "pages/Coins";
 import Coin from "pages/Coin";
 import NotFound from "pages/NotFound";
+import ProtectedRoute from "./ProtectedRoute";
+import Profile from "pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "/coins/:uuid",
         element: <Coin />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
