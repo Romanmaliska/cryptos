@@ -1,6 +1,21 @@
-.currency {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
+.currency_panel {
+  position: absolute;
+  top: 3rem;
+  width: 10rem;
+  border: 1px solid var(--outline-color);
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--light-bg-color);
+
+  & button,
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  & p {
+    &:hover {
+      color: var(--main-text-color);
+    }
+  }
 }

@@ -2,8 +2,6 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CgClose, CgMenuGridO } from "react-icons/cg";
 
-import styles from "components/navbar/Navbar.module.css";
-
 import Dialog from "components/ui/dialog/Dialog";
 
 export default function NavigationMenu() {
@@ -22,7 +20,6 @@ export default function NavigationMenu() {
           <NavLink
             key={navlink}
             to={navlink.toLowerCase()}
-            className={styles.navlink}
             onClick={() => setIsDialogOpen(false)}
           >
             {navlink}

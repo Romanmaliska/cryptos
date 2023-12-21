@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
-
-import Dialog from "components/ui/dialog/Dialog";
+import { Popover } from "@headlessui/react";
 
 import { fetchCurrencyRates } from "slices/currencySlice";
 import { useAppDispatch } from "store/useAppDispatch";
@@ -13,8 +11,6 @@ import styles from "features/currencyOptions/CurrencyOptions.module.css";
 export default function NavbarCurrencyOptions() {
   const dispatch = useAppDispatch();
 
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   const currencies: CurrencyState["currentCurrency"][] = [
     "USD",
     "EUR",
@@ -24,33 +20,30 @@ export default function NavbarCurrencyOptions() {
 
   return (
     <>
-      <IoSettingsOutline
-        size="24px"
-        onClick={() => setIsDialogOpen(!isDialogOpen)}
-      />
-      <Dialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(!isDialogOpen)}
-      >
-        {currencies.map((currency) => (
-          <span
-            className={styles.currency}
-            key={currency}
-            onClick={() => {
-              setIsDialogOpen(false);
-              dispatch(fetchCurrencyRates(currency));
-            }}
-          >
-            <img
-              src={`../currency/${currency}.svg`}
-              alt={currency}
-              width={30}
-              height={30}
-            />
-            <p>{currency}</p>
-          </span>
-        ))}
-      </Dialog>
+      <Popover>
+        <Popover.Button>
+          <IoSettingsOutline size="24px" color="white" />
+        </Popover.Button>
+        <Popover.Panel className={styles.currency_panel}>
+          {currencies.map((currency) => (
+            <Popover.Button key={currency}>
+              <div
+                onClick={() => {
+                  dispatch(fetchCurrencyRates(currency));
+                }}
+              >
+                <img
+                  src={`../currency/${currency}.svg`}
+                  alt={currency}
+                  width={30}
+                  height={30}
+                />
+                <p>{currency}</p>
+              </div>
+            </Popover.Button>
+          ))}
+        </Popover.Panel>
+      </Popover>
     </>
   );
 }
