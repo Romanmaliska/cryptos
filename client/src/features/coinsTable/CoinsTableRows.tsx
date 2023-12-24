@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+
 import { useAppSelector } from "store/useAppDispatch";
-import { selectCurrencyRates } from "../../slices/currencySlice";
-import utilStyles from "../../styles/utils.module.css";
-import { Coin } from "../../types/common";
-import { parseCurrency } from "../../utils/parseCurrency";
-import PercentageChange from "../../components/ui/percentagesChange/PercentageChange";
-import styles from "./CoinsTable.module.css";
-import SimpleLineChart from "./SimpleLineChart";
+import { selectCurrencyRates } from "slices/currencySlice";
+
+import { Coin } from "types/common";
+
+import { parseCurrency } from "utils/parseCurrency";
+import PercentageChange from "components/ui/percentagesChange/PercentageChange";
+import SimpleLineChart from "features/coinsTable/SimpleLineChart";
+
+import utilStyles from "styles/utils.module.css";
+import styles from "features/coinsTable/CoinsTable.module.css";
 
 type Props = {
   coins: Coin[];

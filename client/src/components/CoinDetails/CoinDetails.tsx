@@ -1,6 +1,7 @@
 import CoinOverview from "components/coinOverview/CoinOverview";
 import CoinChart from "features/coinChart/CoinChart";
-import styles from "./CoinDetails.module.css";
+
+import styles from "components/coinDetails/CoinDetails.module.css";
 
 type Props = {
   data: {

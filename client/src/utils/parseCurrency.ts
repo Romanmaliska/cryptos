@@ -1,4 +1,4 @@
-import { CurrencyState } from "./../types/common";
+import { CurrencyState } from "types/common";
 
 type Params = {
   price: string;

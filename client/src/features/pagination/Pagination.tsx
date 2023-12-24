@@ -2,7 +2,7 @@ import Button from "components/ui/button/Button";
 import { usePagination } from "features/pagination/hooks";
 import { Stats } from "types/common";
 
-import styles from "./Pagination.module.css";
+import styles from "features/pagination/Pagination.module.css";
 
 type Props = {
   stats: Stats;

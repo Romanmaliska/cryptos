@@ -1,6 +1,8 @@
 import CoinsTableRows from "features/coinsTable/CoinsTableRows";
-import { Coin } from "../../types/common";
-import styles from "./CoinsTable.module.css";
+
+import { Coin } from "types/common";
+
+import styles from "features/coinsTable/CoinsTable.module.css";
 
 type Props = {
   coins: Coin[];

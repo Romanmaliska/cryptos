@@ -1,8 +1,9 @@
-import styles from "./CoinOverview.module.css";
-import { useAppSelector } from "../../store/useAppDispatch";
-import { selectCurrencyRates } from "../../slices/currencySlice";
-import { parseCurrency } from "../../utils/parseCurrency";
-import PercentageChange from "../ui/percentagesChange/PercentageChange";
+import { useAppSelector } from "store/useAppDispatch";
+import { selectCurrencyRates } from "slices/currencySlice";
+import { parseCurrency } from "utils/parseCurrency";
+import PercentageChange from "components/ui/percentagesChange/PercentageChange";
+
+import styles from "components/coinOverview/CoinOverview.module.css";
 
 type Props = {
   name: string;

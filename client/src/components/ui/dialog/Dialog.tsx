@@ -1,5 +1,6 @@
 import { useRef, useLayoutEffect } from "react";
-import styles from "./Dialog.module.css";
+
+import styles from "components/ui/dialog/Dialog.module.css";
 
 type Props = {
   isOpen: boolean;

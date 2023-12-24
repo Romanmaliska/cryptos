@@ -7,7 +7,7 @@ import { setCredentials } from "slices/userAuthSlice";
 
 import Button from "components/ui/button/Button";
 
-import styles from "./UserStatusForm.module.css";
+import styles from "features/userAuth/UserStatusForm.module.css";
 
 type Props = {
   setIsSignUpShown: (isSignUpShown: boolean) => void;

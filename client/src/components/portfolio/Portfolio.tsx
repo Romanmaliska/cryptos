@@ -1,4 +1,4 @@
-import styles from "./Portfolio.module.css";
+import styles from "components/portfolio/Portfolio.module.css";
 
 export default function Portfolio() {
   const exchanges = [
