@@ -21,7 +21,7 @@ export default function Portfolio() {
       {exchanges.map(({ name, link }) => (
         <a href={link} key={name} target="_blank" rel="noreferrer">
           <img
-            src={`./homepage/${name}.png`}
+            src={`/homepage/${name}.png`}
             alt={name}
             width={80}
             height={80}

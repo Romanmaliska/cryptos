@@ -33,7 +33,7 @@ export default function NavbarCurrencyOptions() {
                 }}
               >
                 <img
-                  src={`../currency/${currency}.svg`}
+                  src={`/currency/${currency}.svg`}
                   alt={currency}
                   width={30}
                   height={30}

@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <p>
         Build with
-        <img src="./coinranking/logo.svg" width={10} height={10} /> Coinranking
+        <img src="/coinranking/logo.svg" width={10} height={10} /> Coinranking
         API
       </p>
     </footer>
