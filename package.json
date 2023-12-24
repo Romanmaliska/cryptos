@@ -5,10 +5,7 @@
   "scripts": {
     "build-server": "cd server && npm run build",
     "start-server": "cd server && npm run start",
-    "install-client": "cd client && npm install",
-    "build-client": "cd client && npm run build",
-    "start-client": "cd client && npm run start"
-
+    "build-client": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",

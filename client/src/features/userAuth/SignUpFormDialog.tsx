@@ -23,7 +23,7 @@ export default function SignUpFormDialog({
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const [register, { isLoading }] = useRegisterMutation();
+  const [register] = useRegisterMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

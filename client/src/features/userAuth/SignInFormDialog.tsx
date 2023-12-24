@@ -22,7 +22,7 @@ export default function SignInFormDialog({
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const [login, { isLoading }] = useLoginMutation();
+  const [login] = useLoginMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

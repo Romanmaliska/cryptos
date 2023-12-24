@@ -1,12 +1,16 @@
 export type Coin = {
+  allTimeHigh: { price: string };
   change: string;
+  description: string;
   iconUrl: string;
   name: string;
+  marketCap: string;
   price: string;
   rank: number;
   sparkline: string[];
   symbol: string;
   uuid: string;
+  websiteUrl: string;
 };
 
 export type Stats = {

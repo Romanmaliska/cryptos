@@ -19,7 +19,7 @@ export default function Portfolio() {
   return (
     <section className={styles.portfolio}>
       {exchanges.map(({ name, link }) => (
-        <a href={link} target="_blank" rel="noreferrer">
+        <a href={link} key={name} target="_blank" rel="noreferrer">
           <img
             src={`./homepage/${name}.png`}
             alt={name}
