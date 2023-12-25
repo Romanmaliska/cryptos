@@ -20,7 +20,7 @@ export const apiSlice = createApi({
   }),
 });
 
-const USERS_API = "https://crypto-server-193v.onrender.com/api/users";
+const USERS_API = import.meta.env.MODE === "production" ? "https://crypto-server-193v.onrender.com/api/users" : "/api/users";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
