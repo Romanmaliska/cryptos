@@ -26,6 +26,12 @@ body {
   color: var(--main-text-color);
 }
 
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   font-size: 2.5rem;
   font-weight: bold;
