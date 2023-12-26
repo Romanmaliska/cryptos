@@ -1,8 +1,12 @@
+import { Suspense, useState, lazy } from "react";
+
 import * as CoinAPI from "API/coinRankingApi";
-import CoinsTable from "features/coinsTable/CoinsTable";
-import CoinsTableLoading from "features/coinsTable/Loading";
+import CoinsTableSkeleton from "features/coinsTable/CoinsTableSkeleton";
+
+
 import Pagination from "features/pagination/Pagination";
-import { Suspense, useState } from "react";
+
+const CoinsTable = lazy(() => import("features/coinsTable/CoinsTable"));
 
 import styles from "styles/utils.module.css";
 
@@ -27,7 +31,7 @@ export default function Coins() {
         Best Coin Price Tracker on the Market
       </h1>
 
-      <Suspense fallback={<CoinsTableLoading />}>
+      <Suspense fallback={<CoinsTableSkeleton rows={100} />}>
         <CoinsTable coins={coins} />
       </Suspense>
 

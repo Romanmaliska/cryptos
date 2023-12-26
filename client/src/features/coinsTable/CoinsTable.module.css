@@ -90,3 +90,17 @@ img {
     display: inline-flex;
   }
 }
+
+.table_skeleton {
+  background-color: var(--light-bg-color);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

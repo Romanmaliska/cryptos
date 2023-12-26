@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 
 import * as CoinAPI from "API/coinRankingApi";
@@ -5,7 +6,9 @@ import * as CoinAPI from "API/coinRankingApi";
 import Hero from "components/hero/Hero";
 import Portfolio from "components/portfolio/Portfolio";
 import Button from "components/ui/button/Button";
-import CoinsTable from "features/coinsTable/CoinsTable";
+import CoinsTableSkeleton from "features/coinsTable/CoinsTableSkeleton";
+
+const CoinsTable = lazy(() => import("features/coinsTable/CoinsTable"));
 
 import styles from "styles/utils.module.css";
 
@@ -17,7 +20,9 @@ export default function Home() {
     <>
       <Hero />
       <Portfolio />
-      <CoinsTable coins={coins} />
+      <Suspense fallback={<CoinsTableSkeleton rows={10} />}>
+        <CoinsTable coins={coins} />
+      </Suspense>
       <Link className={styles.justify_align_center} to="/coins">
         <Button>See More</Button>
       </Link>

@@ -36,7 +36,7 @@ export default function CoinTableRows({ coins }: Props) {
           </td>
           <td>
             <Link to={`../coins/${uuid}`} className={utilStyles.alignCenter}>
-              <img src={iconUrl} width={22} height={22} alt={name} />
+              <img src={iconUrl} width={22} height={22} loading="lazy" alt={name} />
               <span>{name}</span>
               <span className={styles.symbol}>{symbol}</span>
             </Link>
