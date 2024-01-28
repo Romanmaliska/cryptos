@@ -2,16 +2,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+
+  & span, button {
+    margin: 0.5rem 0.25rem;
+    padding: 0.25rem 0.75rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
 
   & span {
     cursor: default;
     outline: solid 1px var(--outline-color);
     border-radius: 16px;
-    margin: 1rem 0.5rem;
-    padding: 0.5rem 1.25rem;
     text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    margin-bottom: 2rem;
+  
+    & span, button {
+      margin: 1rem 0.5rem;
+      padding: 0.5rem 1.25rem;  
+      font-size: 1rem;
+    }
   }
 }

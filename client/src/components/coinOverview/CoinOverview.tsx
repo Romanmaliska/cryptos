@@ -3,26 +3,16 @@ import { selectCurrencyRates } from "slices/currencySlice";
 import { parseCurrency } from "utils/parseCurrency";
 import PercentageChange from "components/ui/percentagesChange/PercentageChange";
 
+import { Coin } from "types/common";
+
 import styles from "components/coinOverview/CoinOverview.module.css";
 
 type Props = {
-  name: string;
-  rank: number;
-  symbol: string;
-  iconUrl: string;
-  price: string;
-  change: string;
+  coin: Coin; 
 };
 
-export default function CoinOverview({
-  rank,
-  name,
-  symbol,
-  iconUrl,
-  price,
-  change,
-}: Props) {
-
+export default function CoinOverview({ coin }: Props) {
+  const { rank, name, symbol, iconUrl, price, change } = coin;
   const currencyState = useAppSelector(selectCurrencyRates);
 
   return (
@@ -34,7 +24,7 @@ export default function CoinOverview({
         <h3>{symbol}</h3>
       </article>
       <article className={styles.detailsWrapper}>
-        <h2>{parseCurrency({price, currencyState})}</h2>
+        <h2>{parseCurrency({ price, currencyState })}</h2>
         <PercentageChange change={change} />
       </article>
     </section>

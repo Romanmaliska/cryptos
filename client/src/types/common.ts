@@ -1,10 +1,12 @@
 export type Coin = {
+  "24hVolume": string;
   allTimeHigh: { price: string };
+  btcPrice: string;
   change: string;
   description: string;
   iconUrl: string;
-  name: string;
   marketCap: string;
+  name: string;
   price: string;
   rank: number;
   sparkline: string[];
