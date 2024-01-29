@@ -14,7 +14,6 @@ connectDB();
 
 const port = process.env.PORT || 5000;
 const app: Application = express();
-const userApiRoutePath = "/api/users";
 
 //Middlewares
 app.use(express.json());
@@ -22,7 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use(userApiRoutePath, userRoutes);
+app.use("/api/ping", (_, res) => res.send("pong"));
+app.use("/api/users", userRoutes);
 
 // Error handling
 app.use(notFound);

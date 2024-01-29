@@ -1,0 +1,26 @@
+.market_stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0rem 1rem 2rem 1rem;
+
+  & div {
+    background-color: var(--light-bg-color);
+    outline: 1px solid var(--outline-color);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .market_stats {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
