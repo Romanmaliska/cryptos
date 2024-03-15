@@ -1,5 +1,5 @@
 #
-name: Create and publish a Docker images
+name: Create and publish a Docker image
 
 # Configures this workflow to run every time a change is pushed to the branch called `main`.
 on:
@@ -14,7 +14,7 @@ env:
 jobs:
   build-and-push-client-image:
     runs-on: ubuntu-latest
-     defaults:
+    defaults:
       run:
         working-directory: ./client
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
