@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({ baseUrl: "" });
+const USERS_API = "/api/users";
 
 export const apiSlice = createApi({
   baseQuery,
@@ -19,8 +20,6 @@ export const apiSlice = createApi({
     }),
   }),
 });
-
-const USERS_API = import.meta.env.MODE === "production" ? "https://crypto-server-193v.onrender.com/api/users" : "/api/users";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -47,4 +46,5 @@ export const userApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useLogoutMutation } = userApiSlice;
+export const { useRegisterMutation, useLoginMutation, useLogoutMutation } =
+  userApiSlice;
