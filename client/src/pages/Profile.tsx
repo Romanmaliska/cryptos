@@ -14,23 +14,36 @@ export default function Profile() {
     <>
       <aside>
         <h2>Profile Page</h2>
-        <Button onClick={() => setShowUserData(true)}>Personal Data</Button>
-        <Button onClick={() => setShowUserData(false)}>Account setting</Button>
+        <Button
+          onClick={() => setShowUserData(true)}
+          className={!showUserData ? "btn_primary" : "btn_secondary"}
+        >
+          Personal Data
+        </Button>
+        <Button
+          onClick={() => setShowUserData(false)}
+          className={showUserData ? "btn_primary" : "btn_secondary"}
+        >
+          Account setting
+        </Button>
       </aside>
-      {showUserData ? (
-        <main>
-          <h3>Personal Data</h3>
-          <p>{name}</p>
-          <p>{email}</p>
-        </main>
-      ) : (
-        <main>
-          <h3>Account setting</h3>
-          <p>Change Name</p> <Button>Change</Button>
-          <p>Change Password</p> <Button>Change</Button>
-          <p>Delete Account</p> <Button>Delete</Button>
-        </main>
-      )}
+      <main className="p-2">
+        {showUserData ? (
+          <>
+            <h4 className="p-2 font-bold">User Name:</h4>
+            <p className="p-2 font-bold">{name}</p>
+            <h4 className="p-2 font-bold">User Email: </h4>
+            <p className="p-2 font-bold">{email}</p>
+          </>
+        ) : (
+          <>
+            <div className="flex flex-col p-2">
+              <h4>Change Password</h4> <Button>Change</Button>
+              <h4>Delete Account</h4> <Button>Delete</Button>
+            </div>
+          </>
+        )}
+      </main>
     </>
   );
 }

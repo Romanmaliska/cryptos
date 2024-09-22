@@ -24,15 +24,18 @@
 
 .user_panel {
   position: absolute;
-  top: 3rem;
+  top: 4.5rem;
   width: 10rem;
   border: 1px solid var(--outline-color);
   border-radius: 0 0 0.5rem 0.5rem;
   padding: 0.5rem;
   background-color: var(--light-bg-color);
 
-  & div,
-  button {
+  & a {
+    margin: 0;
+  }
+
+  & button {
     display: flex;
     align-items: center;
     justify-content: space-between;
