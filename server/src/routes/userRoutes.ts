@@ -4,7 +4,7 @@ import {
   registerUser,
   logoutUser,
   getUserProfile,
-  updateUserProfile,
+  updateUserPassword,
 } from "../controllers/userControllers";
 import { authProtector } from "../middleware/authMiddleware";
 
@@ -16,6 +16,6 @@ router.post("/logout", logoutUser);
 router
   .route("/profile")
   .get(authProtector, getUserProfile)
-  .put(authProtector, updateUserProfile);
+  .put(authProtector, updateUserPassword);
 
 export default router;

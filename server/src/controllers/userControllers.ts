@@ -25,7 +25,7 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error(`The user with email: ${email} already exists.`);
   }
 
-  const user = await User.create({
+  await User.create({
     name,
     email,
     password,
@@ -85,24 +85,30 @@ const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
 // @desc Update user profile
 // @route PUT /api/users/profile
 // @access Private
-const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.user!._id);
+const updateUserPassword = asyncHandler(async (req: Request, res: Response) => {
+  if (!req.user?._id) {
+    res.status(401);
+    throw new Error("Not authorized.");
+  }
+
+  if (!req.body.newPassword) {
+    res.status(400);
+    throw new Error("Please provide a new password.");
+  }
+
+  const user: UserDocument | null = await User.findById(req.user!._id);
 
   if (!user) {
     res.status(404);
     throw new Error("User not found.");
   }
 
-  user.name = req.body.name || user.name;
-  user.email = req.body.email || user.email;
-  req.body.password && (user.password = req.body.password);
+  user.password = req.body.newPassword;
 
-  const updatedUser = await user.save();
+  await user.save();
 
   res.status(200).json({
-    _id: updatedUser._id,
-    name: updatedUser.name,
-    email: updatedUser.email,
+    message: "Password updated.",
   });
 });
 
@@ -111,5 +117,5 @@ export {
   loginUser,
   logoutUser,
   getUserProfile,
-  updateUserProfile,
+  updateUserPassword,
 };

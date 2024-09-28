@@ -13,8 +13,6 @@ export default function CoinStats({ coin }: Props) {
     name,
   } = coin;
 
-  console.log(coin);
-
   return (
     <section>
       <h2>About {name}</h2>
