@@ -42,6 +42,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_API}/logout`,
         method: "POST",
       }),
+      invalidatesTags: ["User"],
+    }),
+    deleteUser: builder.mutation({
+      query: (body) => ({
+        url: `${USERS_API}/profile`,
+        method: "DELETE",
+        body,
+      }),
+      invalidatesTags: ["User"],
     }),
     changePassword: builder.mutation({
       query: (body) => ({
@@ -49,9 +58,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body,
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useLogoutMutation, useChangePasswordMutation } =
-  userApiSlice;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useDeleteUserMutation,
+  useChangePasswordMutation,
+} = userApiSlice;

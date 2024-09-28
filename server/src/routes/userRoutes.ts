@@ -3,6 +3,7 @@ import {
   loginUser,
   registerUser,
   logoutUser,
+  deleteUser,
   getUserProfile,
   updateUserPassword,
 } from "../controllers/userControllers";
@@ -16,6 +17,7 @@ router.post("/logout", logoutUser);
 router
   .route("/profile")
   .get(authProtector, getUserProfile)
-  .put(authProtector, updateUserPassword);
+  .put(authProtector, updateUserPassword)
+  .delete(authProtector, deleteUser);
 
 export default router;

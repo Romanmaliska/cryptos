@@ -112,10 +112,29 @@ const updateUserPassword = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
+const deleteUser = asyncHandler(async (req: Request, res: Response) => {
+  if (!req.user?._id) {
+    res.status(401);
+    throw new Error("Not authorized.");
+  }
+
+  const user = await User.findByIdAndDelete(req.user!._id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found.");
+  }
+
+  res.status(200).json({
+    message: "User deleted.",
+  });
+});
+
 export {
   registerUser,
   loginUser,
   logoutUser,
+  deleteUser,
   getUserProfile,
   updateUserPassword,
 };

@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { RootState } from "store/store";
-import { useChangePasswordMutation } from "slices/userApiSlice";
+import {
+  useChangePasswordMutation,
+  useDeleteUserMutation,
+  useLogoutMutation,
+} from "slices/userApiSlice";
+import { removeCredentials } from "slices/userAuthSlice";
 
 import { IoClose } from "react-icons/io5";
 
@@ -46,12 +51,17 @@ export default function Profile() {
 }
 
 function UserForm({ userAuthData }: { userAuthData: { _id: string } }) {
+  const { _id } = userAuthData;
+
   const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmedNewPassword, setConfirmedNewPassword] = useState("");
-
-  const { _id } = userAuthData;
   const [changePassword] = useChangePasswordMutation();
+
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [deleteUser] = useDeleteUserMutation();
+  const [logout] = useLogoutMutation();
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
@@ -63,6 +73,23 @@ function UserForm({ userAuthData }: { userAuthData: { _id: string } }) {
         setIsPasswordDialogOpen(!isPasswordDialogOpen);
         setNewPassword("");
         setConfirmedNewPassword("");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handeDelete = async (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      const response = await deleteUser({ _id });
+
+      if (!("error" in response)) {
+        await logout({});
+        dispatch(removeCredentials());
+        setIsDeleteDialogOpen(!isDeleteDialogOpen);
       }
     } catch (err) {
       console.log(err);
@@ -109,7 +136,30 @@ function UserForm({ userAuthData }: { userAuthData: { _id: string } }) {
         </div>
         <div>
           <h4>Delete Account</h4>
-          <Button>Delete</Button>
+          <Button onClick={() => setIsDeleteDialogOpen(!isDeleteDialogOpen)}>
+            Delete
+          </Button>
+          <Dialog isOpen={isDeleteDialogOpen} onClose={() => {}}>
+            <form>
+              <h2 className="text-white text-center p-4">
+                Delete your account?
+              </h2>
+              <div className="flex content-center justify-center">
+                <Button className="btn_secondary" onClick={handeDelete}>
+                  Delete
+                </Button>
+                <Button
+                  className="btn_primary"
+                  onClick={(e: Event) => {
+                    e.preventDefault();
+                    setIsDeleteDialogOpen(!isDeleteDialogOpen);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Dialog>
         </div>
       </div>
     </>
