@@ -1,11 +1,30 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
+const walletSchema = new mongoose.Schema({
+  name: { type: String },
+  description: { type: String },
+  uuid: { type: String },
+  price: { type: String },
+  iconUrl: { type: String },
+  symbol: { type: String },
+  ammount: { type: Number },
+  purchasedAt: { type: Number },
+  purchaseDate: { type: Date },
+});
+
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    name: { type: String, readonly: true, required: true },
+    email: { type: String, required: true, readonly: true, unique: true },
     password: { type: String, required: true },
+    deposit: { type: Number, readonly: true, required: true, default: 10_000 },
+    balance: { type: Number, required: true, default: 10_000 },
+    wallet: {
+      type: [walletSchema],
+      required: true,
+      default: [],
+    },
   },
   { timestamps: true }
 );
