@@ -4,10 +4,25 @@ import User from "../models/userModel";
 import { generateToken } from "../utils/generateToken";
 import mongoose from "mongoose";
 
+type Wallet = {
+  name: string;
+  description: string;
+  uuid: string;
+  price: string;
+  iconUrl: string;
+  symbol: string;
+  ammount: number;
+  purchasedAt: number;
+  purchaseDate: Date;
+};
+
 type UserDocument = mongoose.Document & {
   name: string;
   email: string;
   password: string;
+  deposit: number;
+  balance: number;
+  wallet: Wallet[];
   _id: mongoose.Types.ObjectId;
   matchPasswords: (enteredPassword: string) => Promise<boolean>;
 };
