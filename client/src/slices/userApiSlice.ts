@@ -1,28 +1,28 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({ baseUrl: "" });
-const USERS_API = "/api/users";
+const USERS_API = "/api/v1/users";
 
 export const apiSlice = createApi({
   baseQuery,
   tagTypes: ["User"],
   endpoints: (builder) => ({
-    getUsers: builder.query({
+    getUser: builder.query({
       query: () => "users",
-    }),
-    addUser: builder.mutation({
-      query: (body) => ({
-        url: "users",
-        method: "POST",
-        body,
-      }),
-      invalidatesTags: ["User"],
     }),
   }),
 });
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    // addUser: builder.mutation({
+    //   query: (body) => ({
+    //     url: "users",
+    //     method: "POST",
+    //     body,
+    //   }),
+    //   invalidatesTags: ["User"],
+    // }),
     register: builder.mutation({
       query: (body) => ({
         url: `${USERS_API}`,
@@ -36,6 +36,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["User"],
     }),
     logout: builder.mutation({
       query: () => ({
@@ -64,6 +65,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
+  useGetUserQuery,
   useRegisterMutation,
   useLoginMutation,
   useLogoutMutation,

@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     currencyRates: currencyRatesReducer,
     userAuth: userAuthReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer, 
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: true,
