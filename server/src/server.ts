@@ -21,8 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use("/api/ping", (_, res) => res.send("pong"));
-app.use("/api/users", userRoutes);
+app.use("/api/v1/users", userRoutes);
 
 // Error handling
 app.use(notFound);

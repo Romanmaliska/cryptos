@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 import bcrypt from "bcrypt";
 
-const walletSchema = new mongoose.Schema({
+const walletSchema = new Schema({
   name: { type: String },
   description: { type: String },
   uuid: { type: String },
@@ -13,7 +14,7 @@ const walletSchema = new mongoose.Schema({
   purchaseDate: { type: Date },
 });
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
     name: { type: String, readonly: true, required: true },
     email: { type: String, required: true, readonly: true, unique: true },

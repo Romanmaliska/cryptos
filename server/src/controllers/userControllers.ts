@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import { generateToken } from "../utils/generateToken";
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 type Wallet = {
   name: string;
@@ -23,12 +23,12 @@ type UserDocument = mongoose.Document & {
   deposit: number;
   balance: number;
   wallet: Wallet[];
-  _id: mongoose.Types.ObjectId;
+  _id: Schema.Types.ObjectId;
   matchPasswords: (enteredPassword: string) => Promise<boolean>;
 };
 
 // @desc Register a new user
-// @route POST /api/users
+// @route POST /api/v1/users
 // @access Public
 const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
@@ -48,7 +48,7 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc Login user & get token
-// @route POST /api/users/login
+// @route POST /api/v1/users/login
 // @access Public
 const loginUser = asyncHandler(async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -69,7 +69,7 @@ const loginUser = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc Logout user
-// @route POST /api/users/logout
+// @route POST /api/v1/users/logout
 // @access Public
 const logoutUser = asyncHandler(async (_req: Request, res: Response) => {
   res.cookie("jwt", "", {
@@ -83,7 +83,7 @@ const logoutUser = asyncHandler(async (_req: Request, res: Response) => {
 });
 
 // @desc Get user profile
-// @route GET /api/users/profile
+// @route GET /api/v1/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
   const user = {
@@ -97,8 +97,23 @@ const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
+// @desc Get user wallet
+// @route GET /api/v1/users/wallet
+// @access Private
+const getUserWallet = asyncHandler(async (req: Request, res: Response) => {
+  const user = {
+    _id: req.user!._id,
+    name: req.user!.name,
+    email: req.user!.email,
+  };
+
+  res.status(200).json({
+    user,
+  });
+});
+
 // @desc Update user profile
-// @route PUT /api/users/profile
+// @route PUT /api/v1/users/profile
 // @access Private
 const updateUserPassword = asyncHandler(async (req: Request, res: Response) => {
   if (!req.user?._id) {
@@ -151,5 +166,6 @@ export {
   logoutUser,
   deleteUser,
   getUserProfile,
+  getUserWallet,
   updateUserPassword,
 };

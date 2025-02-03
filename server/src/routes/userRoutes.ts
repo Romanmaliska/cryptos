@@ -5,6 +5,7 @@ import {
   logoutUser,
   deleteUser,
   getUserProfile,
+  getUserWallet,
   updateUserPassword,
 } from "../controllers/userControllers";
 import { authProtector } from "../middleware/authMiddleware";
@@ -19,5 +20,7 @@ router
   .get(authProtector, getUserProfile)
   .put(authProtector, updateUserPassword)
   .delete(authProtector, deleteUser);
+  
+router.route("/wallet").get(authProtector, getUserProfile);
 
 export default router;
